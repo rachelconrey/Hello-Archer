@@ -60,7 +60,7 @@
         },
         "instance": {
             "Properties": {
-                "ImageId": "ami-cfe4b2b0",
+                "ImageId": "ami-0ebfd941bbafe70c6",
                 "InstanceType": "t2.nano",
                 "KeyName": {
                     "Ref": "KeyPair"
@@ -78,8 +78,10 @@
                                 "#!/bin/bash",
                                 "sudo yum install --enablerepo=epel -y nodejs",
                                 "wget https://raw.githubusercontent.com/rachelconrey/Hello-Archer/refs/heads/main/helloworld.js -O /home/ec2-user/helloworld.js",
-                                "wget https://raw.githubusercontent.com/rachelconrey/Hello-Archer/refs/heads/main/helloworld.conf -O /etc/init/helloworld.conf",
-                                "start helloworld"
+                                "wget https://raw.githubusercontent.com/rachelconrey/Hello-Archer/main/helloworld -O /etc/systemd/system/helloworld.service",
+                                "sudo systemctl daemon-reload",
+                                "sudo systemctl start helloworld",
+                                "sudo systemctl enable helloworld"
                             ]
                         ]
                     }
